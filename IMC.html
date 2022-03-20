@@ -1,0 +1,183 @@
+<!doctype HTML>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+        <meta name="author" content="Jennifer Lima"/>
+        <meta charset="utf-8"/>
+        <title>Calculadora de IMC</title>
+        <style type="text/css">
+
+                    @font-face { font-family:"Freshman"; src: url('Freshman.otf'); }
+                    @font-face { font-family:"KG Miss Speechy IPA"; src: url('KGMissSpeechyIPA.ttf'); }
+
+
+            body
+            {
+                background-color:#f3d9eb ;
+            }
+
+            form
+            {
+                width:40%;
+                margin-left:29%;
+                margin-top:7%;
+                margin-bottom:5%;
+                color:rgb(255, 255, 255);
+                box-shadow: 1px 1px 10px 1px grey;
+                font-family:"KG Miss Speechy IPA" ;
+                font-size: 20px;
+                background-color:rgba(26, 138, 104, 0.651);
+                background:linear-gradient(to bottom, indianred,rgb(228, 129, 129),indianred);
+                padding: 30px;
+                border-radius: 20px;
+                color:rgb(255, 190, 190);
+
+            }
+
+            h3
+            {
+                margin-left:14%;
+                font-family:"Freshman";
+                color: rgb(243, 196, 196);
+                font-size: 46px;
+            }
+
+            label
+            {
+                margin-left:20%;
+            }
+
+            input[type=button]    
+            {
+                margin-left:20%;
+                margin-bottom:2%;
+            }
+
+            textarea
+            {
+                resize:none;
+                margin-left:25%;
+            }
+
+            #result
+            {
+                margin-left:36% ;
+            }
+
+            #result1
+            {
+                margin-left:16.5% ;
+            }
+
+            #botao
+            {
+                margin-left:5%;
+                margin-bottom:4%;
+            }
+
+            #btn
+            {
+                width:20%;
+			    padding:10px;
+			    margin-left:18%;
+			    border:1px solid;
+			    border-radius:10px;
+                background-color:rgb(235, 165, 165);
+                color:indianred;
+            }
+
+            #info
+            {
+                margin-right:13%;
+                margin-top: 4%;
+
+            }
+
+            #calculos
+            {
+                border-top:5px solid rgb(218, 157, 157);
+                border-radius: 20px;
+                border-bottom:5px solid rgb(218, 157, 157);
+            }
+
+        </style>
+        <script language="JavaScript">
+            function Calcular()
+            {
+                var peso=document.getElementById("txtpeso").value;
+                var altu=document.getElementById("txtaltu").value;
+                var imc;
+
+                if(isNaN(peso))
+                    {
+                        window.alert("Digite somente valores numéricos!");
+                        document.getElementById("txtpeso").value="";
+                        document.getElementById("txtpeso").focus();
+                    }
+                else if(isNaN(altu))
+                    {
+                        window.alert("Digite somente valores numéricos!");
+                        document.getElementById("txtaltu").value="";
+                        document.getElementById("txtaltu").focus();
+                    }
+                else 
+                    {
+                        peso=parseFloat(peso);
+                        altu=parseFloat(altu);
+                        imc=peso/(altu*altu);
+                        document.getElementById("txtimc").value=imc;
+                        if(imc<18.5)
+                            {
+                                document.getElementById("txtmsg").value=
+                                "Sinto muito... Está magro demais!\nComer mais frutas e verduras, aumentar as proteínas e abusar no carboidrato que fornece energia e engorda.\nPraticar exercícios físicos entre 2 e 3 vezes por semana é sempre recomendado independente do resultado do seu IMC.\nProcure um Médico Endocrinologista para avaliar seu estado físico geral e também um Nutricionista ou Nutrólogo para orientação alimentar.\nBoa Sorte!";
+                            }
+                        else if(imc<24.9)
+                            {
+                                document.getElementById("txtmsg").value=
+                                "Parabéns... Está na faixa de peso ideal!\nSua alimentação está boa, mas não se esqueça que deve se alimentar de 3 em 3 horas para manter sua forma física.\nPraticar exercícios físicos entre 2 e 3 vezes por semana é sempre recomendado independente do resultado do seu IMC.\nProcure um Médico Clínico Geral para avaliação periódica do seu estado físico geral.\nBoa Sorte!";
+                            }
+                        else if(imc<30.1)
+                            {
+                                document.getElementById("txtmsg").value=
+                                "Cuidado, você está em sobrepeso!\nMelhorar a sua alimentação comendo mais frutas e verduras, ingestão moderada de proteínas e reduzida de carboidratos, que engordam e estufam.\nPraticar exercícios físicos entre 2 e 3 vezes por semana é sempre recomendado independente do resultado do seu IMC.\nProcure um Médico Endocrinologista urgente para uma avaliação do seu estado físico geral e regulamentação da sua carga nutricional.\nBoa Sorte!";
+                            }
+                        else
+                            {
+                                document.getElementById("txtmsg").value=
+                                "Muito cuidado, você está obeso ou obesa!\nPara emagrecer com saúde é importante comer mais frutas e verduras além de praticar exercício físico entre 2 e 3 vezes por semana, ingerindo 1674 calorias por dia...\nVocê deve ainda falar com seu Médico Endocrinologista para fazer exames de sangue para saber se o seu colesterol e triglicerídeos estão bem. Um nutricionista também pode te ajudar a emagrecer comendo bem, mas além da dieta é também importante fazer exercícios físicos bem orientados por um preparador físico para emagrecer mais rápido.\nBoa Sorte!"
+                            }
+                    }
+            }
+            
+            function Limpar()
+            {
+                document.getElementById("txtpeso").focus();
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <h3> Calcule seu IMC </h3>
+        <div id="calculos">
+            <div id="info">
+            <label for="txtpeso">Informe seu peso:&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="txtpeso"/><br/>
+            <label for="txtaltu"> Informe sua altura:&nbsp;</label>
+            <input type="text" id="txtaltu"/><br/><br/>
+            </div>
+            <div id="result1">
+            <label for="txtimc">O valor do seu IMC é:&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <br/>
+            <div id ="result">
+            <input type="text" id="txtimc" disabled/><br/><br/>
+            </div>
+            <textarea id="txtmsg" cols="40" rows="5" disabled></textarea><br/><br/>
+            <div id="botao">
+            <input type="button" id="btn" value="Calcular" onClick="Calcular()"/>&nbsp;
+            <input type="reset" id="btn" value="Limpar" onClick="Limpar()"/>
+            </div>
+        </div>
+        </form>
+    </body>
+</html>
